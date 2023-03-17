@@ -1,8 +1,8 @@
 export default class Slider {
-  constructor(page, btns) {
-    this.page = document.querySelector(page);
+  constructor(pageSelector, btnsSelectors) {
+    this.page = document.querySelector(pageSelector);
     this.slides = this.page.children;
-    this.btns = document.querySelectorAll(btns);
+    this.btns = document.querySelectorAll(btnsSelectors);
     this.slideIndex = 1;
   }
   showSlides(n) {
@@ -21,6 +21,20 @@ export default class Slider {
 
     // === Show Needeed slide
     this.slides[this.slideIndex - 1].style.display = "block";
+
+    // === Timer And Modal
+    try {
+      this.hanson.style.display = "none";
+      if (n === 3) {
+        this.hanson.classList.add("animated");
+        setTimeout(() => {
+          this.hanson.style.display = "block";
+          this.hanson.classList.add("slideInUp");
+        }, 3000);
+      } else {
+        this.hanson.classList.remove("slideInUp");
+      }
+    } catch (error) {}
   }
 
   plusSlide(direction) {
@@ -28,6 +42,10 @@ export default class Slider {
   }
 
   render() {
+    try {
+      this.hanson = document.querySelector(".hanson");
+    } catch (error) {}
+
     this.btns.forEach((btn) => {
       btn.addEventListener("click", () => {
         this.plusSlide(1);
