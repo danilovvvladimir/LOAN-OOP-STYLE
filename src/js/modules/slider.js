@@ -42,15 +42,18 @@ export default class Slider {
   }
 
   render() {
+    // === Timer Modal Init
     try {
       this.hanson = document.querySelector(".hanson");
     } catch (error) {}
 
     this.btns.forEach((btn) => {
+      // === Switchers Btns
       btn.addEventListener("click", () => {
         this.plusSlide(1);
       });
 
+      // === Slide go to beginning
       btn.parentNode.previousElementSibling.addEventListener("click", (e) => {
         e.preventDefault();
         this.slideIndex = 1;
