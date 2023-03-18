@@ -1,10 +1,10 @@
-export default class Slider {
-  constructor(pageSelector, btnsSelectors) {
-    this.page = document.querySelector(pageSelector);
-    this.slides = this.page.children;
-    this.btns = document.querySelectorAll(btnsSelectors);
-    this.slideIndex = 1;
+import Slider from "./slider";
+
+export default class MainSlider extends Slider {
+  constructor(btnsSelectors) {
+    super(btnsSelectors);
   }
+
   showSlides(n) {
     // === Check boundaries
     if (n > this.slides.length) {
