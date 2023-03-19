@@ -12,11 +12,11 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   mainPageslider.render();
 
-  const modulePageSlider = new MainSlider({
+  const modulesPageSlider = new MainSlider({
     pageSelector: ".moduleapp",
     btnsSelectors: ".next",
   });
-  modulePageSlider.render();
+  modulesPageSlider.render();
 
   const mainPageShowUpSlider = new MiniSlider({
     pageSelector: ".showup__content-slider",
@@ -45,8 +45,14 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   mainPageFeedSlider.init();
 
-  const videoPlayer = new VideoPlayer(".showup .play", ".overlay");
-  videoPlayer.init();
+  const mainPageVideoPlayer = new VideoPlayer(".showup .play", ".overlay");
+  mainPageVideoPlayer.init();
+
+  const modulesPageVideoPlayer = new VideoPlayer(
+    ".module__video-item .play",
+    ".overlay"
+  );
+  modulesPageVideoPlayer.init();
 
   const oldOfficer = new Difference(".officerold", ".officer__card-item");
   oldOfficer.init();
