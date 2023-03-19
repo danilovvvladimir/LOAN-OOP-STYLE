@@ -34,6 +34,11 @@ export default class VideoPlayer {
       this.overlay.style.display = "none";
       this.player.stopVideo();
     });
+
+    this.overlay.addEventListener("click", () => {
+      this.overlay.style.display = "none";
+      this.player.stopVideo();
+    });
   }
 
   createPlayer(url) {
