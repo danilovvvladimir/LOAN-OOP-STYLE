@@ -41,28 +41,35 @@ export default class MainSlider extends Slider {
     this.showSlides((this.slideIndex += direction));
   }
 
-  render() {
-    try {
-      try {
-        this.hanson = document.querySelector(".hanson");
-      } catch (error) {}
-
-      this.btns.forEach((btn) => {
-        // === Switchers Btns
-        btn.addEventListener("click", () => {
-          this.plusSlide(1);
-        });
-
-        // === Slide go to beginning
-        btn.parentNode.previousElementSibling.addEventListener("click", (e) => {
-          e.preventDefault();
-          this.slideIndex = 1;
-          this.showSlides(this.slideIndex);
-        });
+  bindTriggers() {
+    this.btns.forEach((btn) => {
+      // === Switchers Btns
+      btn.addEventListener("click", () => {
+        this.plusSlide(1);
       });
 
-      this.showSlides(this.slideIndex);
-    } catch (error) {}
-    // === Timer Modal Init
+      // === Slide go to beginning
+      btn.parentNode.previousElementSibling.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.slideIndex = 1;
+        this.showSlides(this.slideIndex);
+      });
+    });
+
+    document.querySelectorAll(".prev").forEach((item) => {
+      item.addEventListener("click", () => {
+        this.plusSlide(-1);
+      });
+    });
+  }
+
+  render() {
+    if (this.page) {
+      try {
+        this.hanson = document.querySelector(".hanson");
+        this.showSlides(this.slideIndex);
+        this.bindTriggers();
+      } catch (error) {}
+    }
   }
 }
