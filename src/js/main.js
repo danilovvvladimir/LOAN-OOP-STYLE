@@ -1,9 +1,10 @@
-import Slider from "./modules/slider/slider";
 import MainSlider from "./modules/slider/slider-main";
 import MiniSlider from "./modules/slider/slider-mini";
 import VideoPlayer from "./modules/videoPlayer";
 import Difference from "./modules/difference";
 import Forms from "./modules/forms";
+import ShowInfo from "./modules/showInfo";
+import Download from "./modules/download";
 
 window.addEventListener("DOMContentLoaded", () => {
   const mainPageslider = new MainSlider({
@@ -61,4 +62,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const forms = new Forms("form");
   forms.init();
+
+  const modulesPageShowInfo = new ShowInfo(".plus__content");
+  modulesPageShowInfo.init();
+
+  const modulesPageDownload = new Download(".download");
+  modulesPageDownload.init();
 });

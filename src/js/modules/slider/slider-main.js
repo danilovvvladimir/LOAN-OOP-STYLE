@@ -50,9 +50,11 @@ export default class MainSlider extends Slider {
 
       // === Slide go to beginning
       btn.parentNode.previousElementSibling.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.slideIndex = 1;
-        this.showSlides(this.slideIndex);
+        if (e.currentTarget.tagName === "A") {
+          e.preventDefault();
+          this.slideIndex = 1;
+          this.showSlides(this.slideIndex);
+        }
       });
     });
 
